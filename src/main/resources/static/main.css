@@ -1,7 +1,9 @@
-table {
-    border: solid 1px black;
+.main_table {
+    min-width: 800px;
+    width:80%;
+    margin:0 auto;
 }
 
-td {
-    border: solid 1px black;
+h1 {
+    text-align: center;
 }
