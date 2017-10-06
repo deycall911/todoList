@@ -3,7 +3,6 @@ package hello;
 import hello.Entity.ToDoEntity;
 import hello.Repository.ToDoEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
