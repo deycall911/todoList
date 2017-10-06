@@ -29,6 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         AuthFilter authFilter = new AuthFilter(this.authenticationManager());
         http
+                .csrf().disable()
                 .addFilterAfter(authFilter, AuthFilter.class);
     }
 }
