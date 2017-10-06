@@ -40,4 +40,21 @@ public class ToDoEntity {
     }
 
     private Boolean done = false;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof ToDoEntity)) {
+            return false;
+        }
+        if (!((ToDoEntity) obj).getContent().equals(this.getContent())) {
+            return false;
+        }
+        if (!((ToDoEntity) obj).getId().equals(this.getId())) {
+            return false;
+        }
+        if (!((ToDoEntity) obj).getDone().equals(this.done)) {
+            return false;
+        }
+        return true;
+    }
 }
