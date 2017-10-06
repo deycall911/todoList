@@ -21,7 +21,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		client({method: 'GET', path: '/api/data'}).then(response => {
+		client({method: 'GET', path: '/api/data', headers: {'xAuth': 'teste'}}).then(response => {
 			this.setState({toDoList: response.entity});
 		});
 	}
@@ -33,7 +33,7 @@ class App extends React.Component {
 
     addJob() {
         var thisApp = this;
-        client({method: 'POST', path: '/api/insert/'+$("#newJob").val()}).then(response => {
+        client({method: 'POST', path: '/api/insert/'+$("#newJob").val(), headers: {'xAuth': 'teste'}}).then(response => {
             console.log(response.entity);
             thisApp.state.toDoList.push(response.entity);
             thisApp.setState({toDoList: thisApp.state.toDoList});
@@ -50,7 +50,8 @@ class App extends React.Component {
 
         handleChange(status, id) {
             var thisApp = this;
-            client({method: 'POST', path: '/api/markDone/'+id+'/'+status}).then(response => {
+            client({method: 'POST', path: '/api/markDone/'+id+'/'+status, headers: {'xAuth': 'teste'}
+            }).then(response => {
 
             });
         }

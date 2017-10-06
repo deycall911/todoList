@@ -50,4 +50,9 @@ public class RestCallsController {
         return toDoEntityRepository.save(toDoEntity);
     }
 
+    @RequestMapping("/a")
+    public String a() {
+        throw new NullPointerException("e");
+    }
+
 }
