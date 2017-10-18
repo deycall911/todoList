@@ -27,7 +27,7 @@ class App extends React.Component {
 	}
     deleteJob(job) {
             console.log(job);
-            client({method: 'POST', path: '/api/delete/'+job.id}).then({});
+            client({method: 'POST', path: '/api/delete/'+job.id, headers: {'xAuth': 'teste'}}).then({});
             this.deleteJobFromArray(job);
     }
 
