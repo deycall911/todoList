@@ -10,7 +10,7 @@ module.exports = {
         poll: true
     },
     output: {
-        path: path.join(__dirname, './out/production/resources/static/'),
+        path: path.join(__dirname, './src/main/resources/static/'),
         filename: 'bundle.js'
     },
     resolve: {
