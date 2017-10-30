@@ -31,7 +31,7 @@ public class ToDoEntity {
 
     private String content;
 
-    public Boolean getDone() {
+    public Boolean isDone() {
         return done;
     }
 
@@ -52,7 +52,7 @@ public class ToDoEntity {
         if (!((ToDoEntity) obj).getId().equals(this.getId())) {
             return false;
         }
-        if (!((ToDoEntity) obj).getDone().equals(this.done)) {
+        if (!((ToDoEntity) obj).isDone().equals(this.done)) {
             return false;
         }
         return true;

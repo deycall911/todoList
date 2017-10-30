@@ -2,13 +2,13 @@ package hello;
 
 import hello.Entity.ToDoEntity;
 import hello.Repository.ToDoEntityRepository;
+import org.aspectj.weaver.Iterators;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -32,11 +32,18 @@ public class RestCallsController {
     }
 
     @RequestMapping("/api/data")
-    public Iterable<ToDoEntity> requestList(@RequestParam(required = false) Boolean done) {
+    public Iterable<ToDoEntity> requestList(@RequestParam(required = false) Boolean done, @RequestBody List<Integer> ids) {
         if (done == null) {
+            if (ids != null) {
+                return toDoEntityRepository.findAll(ids);
+            }
             return toDoEntityRepository.findAll();
         }
-        return toDoEntityRepository.findByDone(done);
+        if (ids == null) {
+            return toDoEntityRepository.findByDone(done);
+        }
+        return StreamSupport.stream(toDoEntityRepository.findAll(ids).spliterator(), false)
+                .filter(x -> x.isDone() == done).collect(Collectors.toList());
     }
 
     @RequestMapping("/api/markDone/{id}/{done}")
