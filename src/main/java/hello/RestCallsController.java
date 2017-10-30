@@ -32,7 +32,7 @@ public class RestCallsController {
     }
 
     @RequestMapping("/api/data")
-    public Iterable<ToDoEntity> requestList(@RequestParam(required = false) Boolean done, @RequestBody List<Integer> ids) {
+    public Iterable<ToDoEntity> requestList(@RequestParam(required = false) Boolean done, @RequestBody(required = false) List<Integer> ids) {
         if (done == null) {
             if (ids != null) {
                 return toDoEntityRepository.findAll(ids);
